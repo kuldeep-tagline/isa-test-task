@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  priority: 1
+  queue: MyString
+  run_at: 2022-06-09 12:37:50
+
+two:
+  priority: 1
+  queue: MyString
+  run_at: 2022-06-09 12:37:50
