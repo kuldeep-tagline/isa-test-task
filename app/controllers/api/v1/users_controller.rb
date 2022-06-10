@@ -6,8 +6,8 @@ module Api
       skip_before_action :authenticate_user!
 
       def sign_in
-        user = User.find_by_email(params[:email])
-        if user&.valid_password?(params[:password])
+        user = User.find_by_email(user_params[:email])
+        if user&.valid_password?(user_params[:password])
           render_json(msg: 'User signed in successfully', data: user_with_token(user))
         else
           render_401('Email or password is invalid')

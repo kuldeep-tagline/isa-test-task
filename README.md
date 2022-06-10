@@ -2,11 +2,11 @@
 
 ## Tasks Performed
 
-1. APIs for,
-   a) Get list of enqueue jobs
-   b) Enqueue jobs
-   c) Sign-in API
-   d) Sign-up API
+1. APIs for
+    * Get list of enqueued jobs
+    * Enqueue a new job
+    * User sign-in API
+    * User sign-up API
 
 
 2. Add support for working with queue jobs created above. They should be picked in order and based on set priority.
@@ -17,7 +17,6 @@
 3. Add support for authentication to the API.
 
 ### Setup
-
 * RVM or Rbenv - ruby version management
 * Ruby 3.1.2
 * Rails 7.0.3
@@ -44,6 +43,6 @@ Alternatively (to running `bin/setup`) you can run the following commands, these
 
 ### Postman collection
 
-Checkout below postman documentation for APIs
-
-<https://documenter.getpostman.com/view/14666383/Uz5MGEj7>
+Checkout below postman documentation for APIs [here](https://documenter.getpostman.com/view/14666383/Uz5MGEj7)
+### Demo
+You can check the demo video [here](https://drive.google.com/file/d/1OfAD4_SkRsqc5ZEQHP2g0rbP9F8wmn5M/view)

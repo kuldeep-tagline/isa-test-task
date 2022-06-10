@@ -4,6 +4,7 @@
 namespace :job do
   desc 'desc'
   task run: :environment do
+    puts "[#{DateTime.now.as_json}]"
     QueueJob.where('created_at >= ?', 1.minute.ago).or(QueueJob.where(status: :waiting)).order(:priority).each do |job|
       if job.run_at
         if (1.minute.ago..DateTime.now).cover?(job.run_at)
