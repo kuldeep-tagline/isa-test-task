@@ -10,7 +10,7 @@ module ApplicationErrors
         status: 'Missing Parameter(s)',
         code: 422,
         errors: [],
-        message: "One or more parameters are missing. #{exception}"
+        message: exception.message
       }, status: 422
     end
 
@@ -34,22 +34,22 @@ module ApplicationErrors
 
   protected
 
-  def render_json(msg, data = [])
-    render json: { status: 'OK', message: [msg], data: data, status_code: 200, messageType: 'success' }, status: 200
+  def render_json(msg: [], data: [], status: 200)
+    render json: { status: 'OK', message: [msg], data: data, code: status, messageType: 'success' }, status: status
   end
 
   def render_422(msg)
-    render json: { status: 'Unprocessable Entity', message: [msg].flatten, data: [], status_code: 422, messageType: 'error' },
+    render json: { status: 'Unprocessable Entity', message: [msg].flatten, data: [], code: 422, messageType: 'error' },
            status: 422
   end
 
   def render_400(msg)
-    render json: { status: 'Bad Request', message: [msg], data: [], status_code: 400, messageType: 'error' },
+    render json: { status: 'Bad Request', message: [msg], data: [], code: 400, messageType: 'error' },
            status: 400
   end
 
   def render_404(msg = "The requested endpoint doesn't exist")
-    render json: { status: 'Not Found', message: [msg], data: [], status_code: 404, messageType: 'error' },
+    render json: { status: 'Not Found', message: [msg], data: [], code: 404, messageType: 'error' },
            status: 404
   end
 
@@ -59,7 +59,7 @@ module ApplicationErrors
   end
 
   def render_401(message = 'You are not authorized')
-    render json: { status: 'Unauthorized', message: [message], data: [], status_code: 401, messageType: 'error' },
+    render json: { status: 'Unauthorized', message: [message], data: [], code: 401, messageType: 'error' },
            status: 401
   end
 end

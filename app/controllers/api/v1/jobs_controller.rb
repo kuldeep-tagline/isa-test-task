@@ -3,17 +3,16 @@
 module Api
   module V1
     class JobsController < ApplicationController
-      before_action :authenticate_user!
       def index
         jobs = QueueJob.all
-        render_json('Jobs fetched successfully', jobs)
+        render_json(msg: 'Jobs fetched successfully', data: jobs)
       end
 
       def create
         job = QueueJob.new(job_params)
         job.run_at = DateTime.parse(job_params[:run_at]) if job_params[:run_at]
         job.save
-        render_json('Job created successfully', job)
+        render_json(msg: 'Job created successfully', data: job, status: 201)
       end
 
       private

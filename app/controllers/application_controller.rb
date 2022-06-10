@@ -3,6 +3,8 @@
 class ApplicationController < ActionController::API
   include ApplicationErrors
 
+  before_action :authenticate_user!
+
   TOKEN_PATTERN = /^Bearer (?<token>[^ ]+)/
 
   def render_4041

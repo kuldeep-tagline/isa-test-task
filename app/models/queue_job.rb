@@ -12,12 +12,7 @@ class QueueJob < ApplicationRecord
   end
 
   def perform
-    case job_type
-    when 'return_date_job'
-      a = ReturnDateJob.perform_now
-    when 'create_movie_title_job'
-      CreateMovieTitleJob.perform_now(movie)
-    end
+    type.classify.perform_now
     update(status: :done)
   end
 end
